@@ -36,11 +36,13 @@ class AuthController extends Controller
 
         if(!$user)
             return response()->json(['email' => 'Invalid Email.']);
-
+            $token = $user->createToken('taskmanager-token')->plainTextToken;
+Log::info("token");
+Log::info($token);
         if($user)
         {
             if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                return response()->json(['status'=>true, 'message', 'Welcome, Login Successfully']);
+                return response()->json(['status'=>true, 'token'=>$token, 'message', 'Welcome, Login Successfully']);
             }      
             else{
                 return response()->json(['message','Invalid Password']);

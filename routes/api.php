@@ -22,19 +22,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
-Route::get('tasklist',[TaskController::class,'index']);
-Route::post('store',[TaskController::class,'store']);
-Route::put('update/{id}',[TaskController::class,'update']);
-Route::delete('delete/{id}',[TaskController::class,'destroy']);
-Route::get('status/{id}',[TaskController::class,'status']);
 
 Route::middleware('auth:sanctum')->group(function () {
     // Get authenticated user
     // Route::get('/user', function (Request $request) {
     //     return $request->user();
     // });
-   
-     Route::post('edit/{id}',[TaskController::class,'edit']);
+Route::get('tasklist',[TaskController::class,'index']);
+Route::post('store',[TaskController::class,'store']);
+Route::put('update/{id}',[TaskController::class,'update']);
+Route::delete('delete/{id}',[TaskController::class,'destroy']);
+Route::get('status/{id}',[TaskController::class,'status']);
+Route::post('edit/{id}',[TaskController::class,'edit']);
 
+    
 
 });
